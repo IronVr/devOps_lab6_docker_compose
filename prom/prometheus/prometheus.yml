@@ -38,3 +38,12 @@ scrape_configs:
         target_label: instance 
       - target_label: __address__
         replacement: blackbox:9115 
+
+  - job_name: view_total
+    metrics_path: /metrics 
+    scrape_interval: 15s
+    scrape_timeout: 10s
+    static_configs:
+    - targets: ['10.0.2.15:8000']   
+      labels:
+        service: 'Flask-Redis-App'  
